@@ -1,3 +1,4 @@
--- Placeholder for core dependencies
--- Will be populated in Phase 2
-return {}
+return {
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+}

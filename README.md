@@ -9,6 +9,16 @@ make setup
 nvim
 ```
 
+### Windows Terminal (WSL)
+
+After installation, configure the font in Windows Terminal:
+
+1. Open Windows Terminal Settings (`Ctrl+,`)
+2. Select your Ubuntu/WSL profile
+3. Go to **Appearance**
+4. Set **Font face** to `JetBrainsMono Nerd Font`
+5. Save and restart terminal
+
 ## Keybindings
 
 ### General
@@ -51,9 +61,10 @@ nvim
 
 ## Editor Settings
 
+- **Theme:** Rose Pine Moon
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
-- **Clipboard:** System clipboard (`unnamedplus`)
+- **Clipboard:** System clipboard
 - **Search:** Case-insensitive (smart case when uppercase used)
 - **Splits:** Open right and below
 
@@ -65,4 +76,4 @@ nvim
 
 ## Leader Key
 
-The leader key is `Space`. Used for plugin shortcuts (added in later phases).
+The leader key is `Space`.
