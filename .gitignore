@@ -1,2 +1,5 @@
 # Plan file (local only)
 plan.md
+
+# Plugin lockfile
+lazy-lock.json
