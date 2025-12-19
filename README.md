@@ -73,6 +73,7 @@ After installation, configure the font in Windows Terminal:
 - **Theme:** Rose Pine Moon
 - **Status line:** lualine (mode, git branch, file, position)
 - **Buffer line:** Tab bar for open files
+- **Indent guides:** Vertical lines at each indentation level
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
 - **Clipboard:** System clipboard

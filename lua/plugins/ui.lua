@@ -44,4 +44,11 @@ return {
             map("n", "<A-5>", "<cmd>BufferLineGoToBuffer 5<cr>", { desc = "Go to buffer 5" })
         end,
     },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        config = function()
+            require("ibl").setup()
+        end,
+    },
 }
