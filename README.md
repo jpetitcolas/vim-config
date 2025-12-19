@@ -6,6 +6,8 @@ My personal IDE optimized for Claude Code workflows, code review, and custom sho
 
 ```bash
 sudo apt install ripgrep  # Required for grep search
+npm install -g typescript-language-server typescript  # TypeScript LSP
+npm install -g vscode-langservers-extracted  # ESLint LSP
 make setup
 nvim
 ```
@@ -89,6 +91,17 @@ After installation, configure the font in Windows Terminal:
 | `<leader>dp` | Preview hunk |
 | `<leader>db` | Blame line |
 
+### LSP (TypeScript/ESLint)
+
+| Shortcut | Action |
+|----------|--------|
+| `gd` | Go to definition |
+| `K` | Hover documentation |
+| `[d` | Previous diagnostic |
+| `]d` | Next diagnostic |
+| `<leader>ca` | Code actions |
+| `<leader>rename` | Rename symbol |
+
 ### Diff View (Code Review)
 
 | Shortcut | Action |
@@ -125,6 +138,8 @@ Notes are stored per-project at `~/.claude/<project-name>/review-notes.md`
 - **Buffer line:** Tab bar for open files
 - **File explorer:** neo-tree sidebar
 - **Fuzzy finder:** telescope (files, grep, buffers)
+- **LSP:** TypeScript and ESLint (uses project-local tools from node_modules)
+- **Diagnostics:** Signs in gutter (no virtual text)
 - **Git signs:** +/~/- indicators in gutter
 - **Indent guides:** Vertical lines at each indentation level
 - **Indentation:** 4 spaces
