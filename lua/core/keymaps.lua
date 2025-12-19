@@ -18,11 +18,29 @@ map("n", "<C-Right>", "<C-w>l", { desc = "Go to right window" })
 -- Clear search highlight
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlight" })
 
--- Better escape in terminal
+-- Terminal mode navigation
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- When in terminal buffer (normal mode), Enter re-enters terminal mode
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "terminal",
+    callback = function()
+        vim.keymap.set("n", "<CR>", "i", { buffer = true, desc = "Enter terminal mode" })
+    end,
+})
 
 -- Resize windows with Ctrl+Alt+arrows
 map("n", "<C-A-Up>", "<cmd>resize +2<cr>", { desc = "Increase height" })
 map("n", "<C-A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease height" })
 map("n", "<C-A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease width" })
 map("n", "<C-A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
+
+-- Claude terminal toggle (Alt+C)
+map("n", "<A-c>", function()
+    if _G.ClaudeTerminal then
+        _G.ClaudeTerminal.toggle()
+    else
+        vim.notify("Claude terminal not loaded", vim.log.levels.WARN)
+    end
+end, { desc = "Toggle Claude terminal" })
+
+map("t", "<A-c>", "<C-\\><C-n>:lua if _G.ClaudeTerminal then _G.ClaudeTerminal.hide() end<CR>", { desc = "Hide Claude terminal" })

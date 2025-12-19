@@ -19,6 +19,25 @@ return {
                 use_libuv_file_watcher = true,
             },
         })
-        vim.keymap.set("n", "<A-e>", "<cmd>Neotree toggle<cr>", { desc = "Toggle file explorer" })
+        vim.keymap.set("n", "<A-e>", function()
+            -- Check if we're in diffview by looking at buffer/filetype
+            local ft = vim.bo.filetype
+            local bufname = vim.fn.bufname()
+            local in_diffview = ft:match("^Diffview") or bufname:match("^diffview://")
+
+            -- Also check via diffview lib
+            if not in_diffview then
+                local ok, lib = pcall(require, "diffview.lib")
+                if ok and lib.get_current_view() then
+                    in_diffview = true
+                end
+            end
+
+            if in_diffview then
+                vim.cmd("DiffviewToggleFiles")
+            else
+                vim.cmd("Neotree toggle")
+            end
+        end, { desc = "Toggle file explorer / diffview files" })
     end,
 }

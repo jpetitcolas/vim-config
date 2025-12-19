@@ -71,7 +71,38 @@ After installation, configure the font in Windows Terminal:
 
 | Shortcut | Action |
 |----------|--------|
-| `Esc Esc` | Exit terminal mode |
+| `Esc Esc` | Exit terminal mode (to normal mode) |
+| `Enter` or `i` | Re-enter terminal mode |
+| `Alt+C` | Toggle Claude terminal |
+
+### Diff View (Code Review)
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt+D` | Toggle diff view (against origin/main) |
+| `Alt+E` | Toggle file panel (in diff view) |
+
+### Review Notes
+
+| Shortcut | Action |
+|----------|--------|
+| `<leader>rn` | Add review note at cursor |
+| `<leader>rc` | Send review notes to Claude |
+| `<leader>ac` | Ask Claude (add note + send immediately) |
+| `<leader>ro` | Open review notes file |
+
+## Code Review Workflow
+
+1. **Open diff view:** `Alt+D` to see changes against main branch
+2. **Navigate files:** `Alt+E` to toggle the file panel
+3. **Add notes:** Position cursor, press `<leader>rn`, type your note
+4. **Send to Claude:** `<leader>rc` sends all notes to Claude terminal
+5. **Ask Claude:** `<leader>ac` adds note and sends immediately
+6. **Interact:** Claude responds, you can type follow-ups directly
+7. **Toggle Claude:** `Alt+C` to show/hide Claude terminal
+8. **Repeat:** Review more code, add more notes, iterate
+
+Notes are stored per-project at `~/.claude/<project-name>/review-notes.md`
 
 ## Editor Settings
 
