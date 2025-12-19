@@ -80,6 +80,7 @@ After installation, configure the font in Windows Terminal:
 - **Buffer line:** Tab bar for open files
 - **File explorer:** neo-tree sidebar
 - **Fuzzy finder:** telescope (files, grep, buffers)
+- **Git signs:** +/~/- indicators in gutter
 - **Indent guides:** Vertical lines at each indentation level
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
