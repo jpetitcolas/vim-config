@@ -27,6 +27,7 @@ After installation, configure the font in Windows Terminal:
 |----------|--------|
 | `Ctrl+S` | Save file |
 | `Esc` | Clear search highlight |
+| `Alt+E` | Toggle file explorer |
 
 ### Moving Lines
 
@@ -53,6 +54,14 @@ After installation, configure the font in Windows Terminal:
 | `Ctrl+Alt+Left` | Decrease width |
 | `Ctrl+Alt+Right` | Increase width |
 
+### Buffers (Tabs)
+
+| Shortcut | Action |
+|----------|--------|
+| `Alt+]` | Next buffer |
+| `Alt+[` | Previous buffer |
+| `Alt+1` to `Alt+5` | Jump to buffer by number |
+
 ### Terminal
 
 | Shortcut | Action |
@@ -63,6 +72,7 @@ After installation, configure the font in Windows Terminal:
 
 - **Theme:** Rose Pine Moon
 - **Status line:** lualine (mode, git branch, file, position)
+- **Buffer line:** Tab bar for open files
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
 - **Clipboard:** System clipboard
