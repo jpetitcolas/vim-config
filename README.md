@@ -5,6 +5,7 @@ My personal IDE optimized for Claude Code workflows, code review, and custom sho
 ## Installation
 
 ```bash
+sudo apt install ripgrep  # Required for grep search
 make setup
 nvim
 ```
@@ -28,6 +29,9 @@ After installation, configure the font in Windows Terminal:
 | `Ctrl+S` | Save file |
 | `Esc` | Clear search highlight |
 | `Alt+E` | Toggle file explorer |
+| `Alt+F` | Find files |
+| `Alt+G` | Grep in files |
+| `Alt+B` | Find buffers |
 
 ### Moving Lines
 
@@ -74,6 +78,8 @@ After installation, configure the font in Windows Terminal:
 - **Theme:** Rose Pine Moon
 - **Status line:** lualine (mode, git branch, file, position)
 - **Buffer line:** Tab bar for open files
+- **File explorer:** neo-tree sidebar
+- **Fuzzy finder:** telescope (files, grep, buffers)
 - **Indent guides:** Vertical lines at each indentation level
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
