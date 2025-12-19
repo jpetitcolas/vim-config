@@ -62,6 +62,7 @@ After installation, configure the font in Windows Terminal:
 ## Editor Settings
 
 - **Theme:** Rose Pine Moon
+- **Status line:** lualine (mode, git branch, file, position)
 - **Indentation:** 4 spaces
 - **Line numbers:** Absolute
 - **Clipboard:** System clipboard
