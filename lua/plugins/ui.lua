@@ -14,9 +14,16 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
+            local function project_name()
+                return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+            end
+
             require("lualine").setup({
                 options = {
                     theme = "rose-pine",
+                },
+                sections = {
+                    lualine_c = { project_name, "filename" },
                 },
             })
         end,
