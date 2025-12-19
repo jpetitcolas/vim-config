@@ -69,8 +69,9 @@ local function create_terminal()
         end,
     })
 
-    -- Set buffer options
+    -- Set buffer options to persist between show/hide
     vim.bo[M.buf].buflisted = false
+    vim.bo[M.buf].bufhidden = "hide"
 
     -- Close the temporary window (keeps buffer running)
     vim.api.nvim_win_close(term_win, false)
