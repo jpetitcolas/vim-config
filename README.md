@@ -61,6 +61,7 @@ After installation, configure the font in Windows Terminal:
 | `Alt+]` | Next buffer |
 | `Alt+[` | Previous buffer |
 | `Alt+1` to `Alt+5` | Jump to buffer by number |
+| `Alt+W` | Close buffer |
 
 ### Terminal
 
@@ -82,6 +83,7 @@ After installation, configure the font in Windows Terminal:
 
 ## Automatic Behaviors
 
+- Session restored when reopening nvim in same directory
 - Trailing whitespace trimmed on save
 - Cursor returns to last position when reopening files
 - Press `q` to close help, man pages, quickfix
