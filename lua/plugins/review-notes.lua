@@ -71,30 +71,6 @@ local function clear_notes()
     end
 end
 
-local function wait_and_send(retries)
-    retries = retries or 0
-    local max_retries = 30
-
-    if _G.ClaudeTerminal and _G.ClaudeTerminal.is_ready() then
-        local notes_path = get_notes_path()
-        local lines = vim.fn.readfile(notes_path)
-        local content = table.concat(lines, "\n")
-
-        _G.ClaudeTerminal.send(content)
-        vim.notify("Notes sent to Claude", vim.log.levels.INFO)
-        vim.fn.delete(notes_path)
-        return
-    end
-
-    if retries < max_retries then
-        vim.defer_fn(function()
-            wait_and_send(retries + 1)
-        end, 200)
-    else
-        vim.notify("Claude not ready after timeout", vim.log.levels.ERROR)
-    end
-end
-
 local function send_to_claude()
     local notes_path = get_notes_path()
     if vim.fn.filereadable(notes_path) == 0 then
@@ -107,9 +83,15 @@ local function send_to_claude()
         return
     end
 
-    -- Show terminal and send
-    _G.ClaudeTerminal.show()
-    wait_and_send(0)
+    local lines = vim.fn.readfile(notes_path)
+    local content = table.concat(lines, "\n")
+
+    _G.ClaudeTerminal.send_when_ready(content, {
+        on_success = function()
+            vim.notify("Notes sent to Claude", vim.log.levels.INFO)
+            vim.fn.delete(notes_path)
+        end,
+    })
 end
 
 local function ask_claude()
@@ -135,21 +117,11 @@ local function ask_claude()
             question
         )
 
-        _G.ClaudeTerminal.show()
-
-        -- Wait for Claude to be ready, then send
-        local function try_send(retries)
-            retries = retries or 0
-            if _G.ClaudeTerminal.is_ready() then
-                _G.ClaudeTerminal.send(content)
+        _G.ClaudeTerminal.send_when_ready(content, {
+            on_success = function()
                 vim.notify("Sent to Claude", vim.log.levels.INFO)
-            elseif retries < 30 then
-                vim.defer_fn(function() try_send(retries + 1) end, 200)
-            else
-                vim.notify("Claude not ready", vim.log.levels.ERROR)
-            end
-        end
-        try_send(0)
+            end,
+        })
     end)
 end
 

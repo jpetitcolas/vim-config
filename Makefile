@@ -2,14 +2,21 @@ FONT_NAME := JetBrainsMono
 FONT_URL := https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/$(FONT_NAME).zip
 FONT_DIR := ~/.local/share/fonts
 
-.PHONY: setup init install-font
+.PHONY: setup init install-font install-deps
 
 setup: init
 	@ln -sf $(CURDIR) ~/.config/nvim
 	@echo "Neovim config linked to ~/.config/nvim"
 	@echo "Run 'nvim' to start (plugins install automatically)"
 
-init: install-font
+init: install-font install-deps
+
+install-deps:
+	@echo "Installing npm dependencies..."
+	@npm install -g typescript-language-server typescript
+	@npm install -g vscode-langservers-extracted
+	@npm install -g tree-sitter-cli
+	@echo "Dependencies installed"
 
 install-font:
 	@if fc-list | grep -qi "JetBrainsMono Nerd Font"; then \

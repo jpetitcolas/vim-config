@@ -173,6 +173,32 @@ function M.send(text)
     return true
 end
 
+function M.send_when_ready(text, opts)
+    opts = opts or {}
+    local max_retries = opts.max_retries or 30
+    local interval = opts.interval or 200
+    local on_success = opts.on_success
+    local on_error = opts.on_error
+
+    local function try_send(retries)
+        if M.is_ready() then
+            M.send(text)
+            if on_success then on_success() end
+        elseif retries < max_retries then
+            vim.defer_fn(function() try_send(retries + 1) end, interval)
+        else
+            if on_error then
+                on_error()
+            else
+                vim.notify("Claude not ready after timeout", vim.log.levels.ERROR)
+            end
+        end
+    end
+
+    M.show()
+    try_send(0)
+end
+
 function M.get_channel()
     return M.chan
 end

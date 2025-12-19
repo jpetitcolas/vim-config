@@ -6,8 +6,6 @@ My personal IDE optimized for Claude Code workflows, code review, and custom sho
 
 ```bash
 sudo apt install ripgrep  # Required for grep search
-npm install -g typescript-language-server typescript  # TypeScript LSP
-npm install -g vscode-langservers-extracted  # ESLint LSP
 make setup
 nvim
 ```
