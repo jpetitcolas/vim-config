@@ -75,6 +75,20 @@ After installation, configure the font in Windows Terminal:
 | `Enter` or `i` | Re-enter terminal mode |
 | `Alt+C` | Toggle Claude terminal |
 
+### Git Hunks
+
+| Shortcut | Action |
+|----------|--------|
+| `]c` | Next hunk |
+| `[c` | Previous hunk |
+| `<leader>da` | Stage hunk |
+| `<leader>dA` | Stage buffer |
+| `<leader>du` | Unstage hunk |
+| `<leader>dr` | Reset hunk |
+| `<leader>dR` | Reset buffer |
+| `<leader>dp` | Preview hunk |
+| `<leader>db` | Blame line |
+
 ### Diff View (Code Review)
 
 | Shortcut | Action |
