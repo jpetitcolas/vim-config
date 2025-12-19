@@ -8,6 +8,12 @@ return {
                 variant = "moon",
             })
             vim.cmd("colorscheme rose-pine-moon")
+
+            -- Override diff colors after colorscheme loads
+            vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#2d5a4e" })
+            vim.api.nvim_set_hl(0, "DiffChange", { bg = "#4d4030" })
+            vim.api.nvim_set_hl(0, "DiffText", { bg = "#5c5430" })
+            vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#5a2d3a" })
         end,
     },
     {
