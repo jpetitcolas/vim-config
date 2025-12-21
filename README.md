@@ -4,6 +4,27 @@ My personal IDE optimized for Claude Code workflows, code review, and custom sho
 
 ## Installation
 
+### Install Neovim (latest stable)
+
+This configuration requires Neovim v0.11.x or later.
+
+```bash
+# Download and extract the latest stable version
+cd /tmp
+wget https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz
+tar xzf nvim-linux-x86_64.tar.gz
+
+# Remove old version and install new one
+sudo apt remove neovim neovim-runtime
+sudo mv nvim-linux-x86_64 /opt/nvim
+sudo ln -sf /opt/nvim/bin/nvim /usr/bin/nvim
+
+# Verify installation
+nvim --version  # Should show v0.11.5
+```
+
+### Install Configuration
+
 ```bash
 sudo apt install ripgrep  # Required for grep search
 make setup
