@@ -94,8 +94,8 @@ local function show_terminal()
     M.win = vim.api.nvim_get_current_win()
     vim.api.nvim_win_set_buf(M.win, M.buf)
 
-    -- Resize to 40%
-    local height = math.floor(vim.o.lines * 0.4)
+    -- Resize to 100% (full screen)
+    local height = vim.o.lines
     vim.cmd("resize " .. height)
 
     -- Enter terminal mode
