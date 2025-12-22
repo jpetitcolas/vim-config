@@ -20,7 +20,13 @@ map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear highlight" })
 
 -- Terminal mode navigation
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-map("t", "<C-S-v>", '<C-\\><C-n>"+pi', { desc = "Paste in terminal" })
+map("t", "<C-S-v>", function()
+    local clipboard = vim.fn.getreg("+")
+    local chan = vim.b.terminal_job_id
+    if chan then
+        vim.api.nvim_chan_send(chan, clipboard)
+    end
+end, { desc = "Paste in terminal" })
 -- When in terminal buffer (normal mode), Enter re-enters terminal mode
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "terminal",
