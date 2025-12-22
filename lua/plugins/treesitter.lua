@@ -19,17 +19,24 @@ return {
       })
 
       -- Enable treesitter highlighting for these filetypes
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "typescript", "typescriptreact",
-          "javascript", "javascriptreact",
-          "json", "yaml", "html", "css",
-          "lua", "markdown", "bash", "sh",
-        },
-        callback = function()
+      local ts_filetypes = {
+        "typescript", "typescriptreact",
+        "javascript", "javascriptreact",
+        "json", "yaml", "html", "css",
+        "lua", "markdown", "bash", "sh",
+      }
+
+      local function enable_treesitter()
+        local ft = vim.bo.filetype
+        if vim.tbl_contains(ts_filetypes, ft) then
           vim.treesitter.start()
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end,
+        end
+      end
+
+      vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+        pattern = "*",
+        callback = enable_treesitter,
       })
     end,
   },
