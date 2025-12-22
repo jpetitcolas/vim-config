@@ -32,3 +32,16 @@ autocmd("FileType", {
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
 })
+
+-- Prestart Claude terminal for faster first toggle
+augroup("ClaudePrestart", { clear = true })
+autocmd("VimEnter", {
+    group = "ClaudePrestart",
+    callback = function()
+        vim.defer_fn(function()
+            if _G.ClaudeTerminal then
+                _G.ClaudeTerminal.prestart()
+            end
+        end, 100)
+    end,
+})
