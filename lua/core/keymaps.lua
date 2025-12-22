@@ -41,6 +41,17 @@ map("n", "<C-A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease height" })
 map("n", "<C-A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease width" })
 map("n", "<C-A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
 
+-- Toggle terminal full screen (Alt+T)
+map("n", "<A-t>", function()
+    if _G.Terminal then
+        _G.Terminal.toggle()
+    else
+        vim.notify("Terminal not loaded", vim.log.levels.WARN)
+    end
+end, { desc = "Toggle terminal" })
+
+map("t", "<A-t>", "<C-\\><C-n>:lua if _G.Terminal then _G.Terminal.hide() end<CR>", { desc = "Hide terminal" })
+
 -- Claude terminal toggle (Alt+C)
 map("n", "<A-c>", function()
     if _G.ClaudeTerminal then
