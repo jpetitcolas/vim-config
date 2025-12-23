@@ -10,6 +10,9 @@ return {
             if view then
                 vim.cmd("DiffviewClose")
             else
+                -- Hide terminals before showing diffview
+                if _G.Terminal then _G.Terminal.hide() end
+                if _G.ClaudeTerminal then _G.ClaudeTerminal.hide() end
                 vim.cmd("DiffviewOpen")
                 -- Pre-start Claude in background
                 vim.defer_fn(function()
@@ -18,6 +21,6 @@ return {
                     end
                 end, 500)
             end
-        end, { desc = "Toggle diff view against main" })
+        end, { desc = "Switch to diff view" })
     end,
 }

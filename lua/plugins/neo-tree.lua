@@ -41,8 +41,11 @@ return {
             if in_diffview then
                 vim.cmd("DiffviewToggleFiles")
             else
+                -- Hide terminals before showing explorer
+                if _G.Terminal then _G.Terminal.hide() end
+                if _G.ClaudeTerminal then _G.ClaudeTerminal.hide() end
                 vim.cmd("Neotree toggle")
             end
-        end, { desc = "Toggle file explorer / diffview files" })
+        end, { desc = "Switch to explorer / diffview files" })
     end,
 }
